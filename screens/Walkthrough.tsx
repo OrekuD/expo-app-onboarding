@@ -88,6 +88,7 @@ const Walkthrough = ({
                     x: (activeSlideIndex + 1) * width,
                     animated: true,
                   });
+                  setActiveSlideIndex(activeSlideIndex + 1);
                 }
           }
         />
@@ -112,7 +113,6 @@ const styles = StyleSheet.create({
   pagination: {
     width: width,
     height: height * 0.05,
-    // backgroundColor: blue,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
