@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Text, View, StyleSheet, ScrollView, Animated } from "react-native";
+import { View, StyleSheet, ScrollView, Animated } from "react-native";
 import { white, blue, grey } from "../constants/Colors";
 import { StackScreenProps } from "@react-navigation/stack";
 import { HomeStackParamList } from "../types";
@@ -13,11 +13,11 @@ const Walkthrough = ({
   navigation,
 }: StackScreenProps<HomeStackParamList, "Walkthrough">) => {
   const scrollX = useRef(new Animated.Value(0)).current;
-  const scrollRef = useRef<ScrollView>();
+  const scrollRef = useRef<ScrollView>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
   return (
     <View style={styles.container}>
-      <ScrollView
+      <Animated.ScrollView
         ref={scrollRef}
         horizontal
         pagingEnabled
@@ -42,9 +42,9 @@ const Walkthrough = ({
         {slides.map((slide, index) => {
           return <Slide key={index} slide={slide} />;
         })}
-      </ScrollView>
+      </Animated.ScrollView>
       <View style={styles.pagination}>
-        {slides.map((slide, index) => {
+        {slides.map((_, index) => {
           const inputRange = [
             (index - 1) * width,
             index * width,
@@ -84,7 +84,6 @@ const Walkthrough = ({
             activeSlideIndex === 2
               ? () => navigation.navigate("HomeScreen")
               : () => {
-                  console.log((activeSlideIndex + 1) * width);
                   scrollRef.current?.scrollTo({
                     x: (activeSlideIndex + 1) * width,
                     animated: true,
