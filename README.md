@@ -1,6 +1,7 @@
 #### Mobile App Onboarding
 
 An onboarding component for a mobile app built with Expo.
+[Inspiration](https://www.uplabs.com/posts/on-boarding-pages-fbaa5401-3bd2-4ba3-ba14-571f4203a1b4)
 
 ##### App screenshots
 
